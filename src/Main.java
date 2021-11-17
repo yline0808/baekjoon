@@ -1,28 +1,25 @@
 import java.util.*;
-import java.io.*;
 
-/**
- * 14719 빗물
- * 1662 압축
- * 1158 : 요세푸스
- */
-
-public class Main {
+class Main {
     public static void main(String[] args) {
-        HashSet<Integer> hs1 = new HashSet<>();
-        HashSet<Integer> hs2 = new HashSet<>();
+        ArrayList<Integer> arr = new ArrayList<>();
+        TreeSet<Integer> tree = new TreeSet<>();
+        Random random = new Random();
+        int max = 10000000;
+        ArrayList<Integer> randomNumber = new ArrayList<>();
 
-        hs1.add(1);
-        hs1.add(2);
-        hs1.add(3);
-        hs2.add(2);
-        hs2.add(3);
-        hs2.add(4);
+        for(int i = 0; i < max; i++) randomNumber.add(random.nextInt());
 
-        hs1.removeAll(hs2);
+        long start = System.currentTimeMillis();
+        for(int i = 0; i < max; i++) arr.add(randomNumber.get(i));
+        Collections.sort(arr);
+        long end = System.currentTimeMillis();
+        System.out.println((end - start));
 
-        int size = hs1.size();
-        System.out.println("size = " + size);
 
+        start = System.currentTimeMillis();
+        for(int i = 0; i < max; i++) tree.add(randomNumber.get(i));
+        end = System.currentTimeMillis();
+        System.out.println((end - start));
     }
 }
