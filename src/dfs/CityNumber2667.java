@@ -25,6 +25,7 @@ class CityNumber2667{
     static int[] dy = { -1, 0, 1, 0 };
 
     public static void main(String args[]) {
+        // === 입력 ===
         Scanner sc = new Scanner(System.in);
         int n = Integer.parseInt(sc.nextLine());    // 입력받을 크기
         int[][] arr = new int[n][n];                // 입력받을 배열
@@ -39,16 +40,19 @@ class CityNumber2667{
         }
         sc.close();
 
+        // === 구현 ===
         boolean[][] check = new boolean[n][n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 // 방문하지 않았으면서 현재 위치가 0이 아닌 경우
                 if (!check[i][j] && arr[i][j] != 0)
-                    //
+                    // 현재 위치에 해당하는 부분의 넓이를 계산하여 answer에 추가
                     answer.add(countCity(arr, check, n, i, j));
             }
         }
+
+        // === 결과 ===
         Collections.sort(answer);
         System.out.println(answer.size());
         for (int i : answer) System.out.println(i);

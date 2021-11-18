@@ -59,8 +59,8 @@ class DfsAndBfs1260 {
         dfsResult.add(idx);         // 결과에 현재 위치 추가
 
         // 현재 노드에서 방문 가능한 노드중에 아직 방문 안한 노드 재귀호출
-        for(int nex : arr[idx]){
-            if(!check[nex]) dfs(nex);
+        for(int next : arr[idx]){
+            if(!check[next]) dfs(next);
         }
     }
 

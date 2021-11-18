@@ -1,25 +1,43 @@
 import java.util.*;
 
-class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        TreeSet<Integer> tree = new TreeSet<>();
-        Random random = new Random();
-        int max = 10000000;
-        ArrayList<Integer> randomNumber = new ArrayList<>();
+class Main{
+    static List<Integer>[] arr;
+    static boolean[] visited;
+    static int answer;
 
-        for(int i = 0; i < max; i++) randomNumber.add(random.nextInt());
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
 
-        long start = System.currentTimeMillis();
-        for(int i = 0; i < max; i++) arr.add(randomNumber.get(i));
-        Collections.sort(arr);
-        long end = System.currentTimeMillis();
-        System.out.println((end - start));
+        int n = sc.nextInt();
+        int len = sc.nextInt();
 
+        arr = new ArrayList[n + 1];
+        visited = new boolean[n + 1];
+        for(int i = 0; i <= n; i++) arr[i] = new ArrayList<>();
 
-        start = System.currentTimeMillis();
-        for(int i = 0; i < max; i++) tree.add(randomNumber.get(i));
-        end = System.currentTimeMillis();
-        System.out.println((end - start));
+        for(int i = 0; i < len; i++){
+            int n1 = sc.nextInt();
+            int n2 = sc.nextInt();
+            arr[n1].add(n2);
+            arr[n2].add(n1);
+        }
+
+        sc.close();
+
+        answer = -1;
+        dfs(1);
+
+        System.out.println(answer);
+    }
+
+    public static void dfs(int idx){
+        if(visited[idx]) return;
+
+        visited[idx] = true;
+        answer++;
+
+        for(int i : arr[idx]){
+            if(!visited[i]) dfs(i);
+        }
     }
 }
