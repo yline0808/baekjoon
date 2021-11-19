@@ -45,6 +45,7 @@ public class Virus2606 {
         answer++;               // 현재 노드 카운트
         visited[idx] = true;    // 현재 노드 방문처리
 
-        for(int i : arr[idx]) dfs(i);   // 현재 노드에서 갈 수 있는 노드 깊이우선으로 방문
+        for(int i : arr[idx])
+            if(!visited[i]) dfs(i);   // 현재 노드에서 갈 수 있는 노드 깊이우선으로 방문
     }
 }
