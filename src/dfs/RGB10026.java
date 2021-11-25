@@ -2,7 +2,7 @@ package dfs;
 
 import java.util.Scanner;
 
-public class RGB10026 {
+class RGB10026 {
     static int n;               // 구역크기
     static char[][] map;        // 구역정보를 담을 배열
     static boolean[][] visited; // 방문여부 담을 배열

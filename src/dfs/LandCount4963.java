@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class LandCount4963 {
+class LandCount4963 {
     static int[][] map;             // 섬 정보가 있는 2차원 배열
     static List<Integer> answer;    // 정답을 담을 배열
     // 12시 방향부터 시계방향으로 이동할 x, y의 값 차이

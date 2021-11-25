@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ConnectNodeCount11724 {
+class ConnectNodeCount11724 {
     static List<Integer>[] arr;     // 인접리스트
     static boolean[] visited;       // 노드방문여부 배열
 

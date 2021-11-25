@@ -2,7 +2,7 @@ package dfs;
 
 import java.util.Scanner;
 
-public class Alphabet1987 {
+class Alphabet1987 {
     static int answer;
     static int[][] map;
     static boolean[] alpha = new boolean[26];

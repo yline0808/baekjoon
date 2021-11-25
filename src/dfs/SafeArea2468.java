@@ -2,7 +2,7 @@ package dfs;
 
 import java.util.Scanner;
 
-public class SafeArea2468 {
+class SafeArea2468 {
     static int[][] map;         // 영역을 담을 배열
     static boolean[][] visited; // 방문여부를 담을 배열
     // 이동시 x, y 증감 값

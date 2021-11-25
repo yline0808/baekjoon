@@ -3,7 +3,7 @@ package dfs;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class GetArea2583 {
+class GetArea2583 {
     static int m;           // 세로 길이
     static int n;           // 가로 길이
     static int k;           // 네모의 개수

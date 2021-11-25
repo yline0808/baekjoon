@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Virus2606 {
+class Virus2606 {
     static List<Integer>[] arr; // 인접 리스트
     static boolean[] visited;   // 노드 방문여부
     static int answer;          // 결과

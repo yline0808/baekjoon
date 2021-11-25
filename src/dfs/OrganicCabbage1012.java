@@ -2,7 +2,7 @@ package dfs;
 
 import java.util.Scanner;
 
-public class OrganicCabbage1012 {
+class OrganicCabbage1012 {
     static int[][] map;     // 농사지 지도
     // 상 우 하 좌 방향으로 이동하기 위한 임시 변수
     static final int[] dx = {0, 1, 0, -1};
