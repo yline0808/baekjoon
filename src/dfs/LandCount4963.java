@@ -31,6 +31,8 @@ public class LandCount4963 {
                 }
             }
 
+            sc.close();
+
             // === 구현 ===
             int cnt = 0;        // 몇개의 섬이있는지 카운트할 변수
             // map의 전체 탐색
@@ -45,8 +47,6 @@ public class LandCount4963 {
             }
             answer.add(cnt);        // 정답 추가
         }
-
-        sc.close();
 
         // === 출력 ===
         for(int i : answer) System.out.println(i);
