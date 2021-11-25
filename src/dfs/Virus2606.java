@@ -33,12 +33,12 @@ public class Virus2606 {
         // 여기서는 단순 카운트만 하면 되기때문에 인접리스트를 정렬 할 필요가 없음
         // 감염 시작인 1번 노드는 제외하기 위해 -1 로 초기화
         answer = -1;
-        dfs(1);     // 깊이우선 탐색
+        dfs(1);     // 깊이 우선 탐색
 
         // === 결과 ===
         System.out.println(answer);
     }
-    // 깊이우선 탐색
+    // 깊이 우선 탐색
     public static void dfs(int idx){
         if(visited[idx]) return;    // 이미 방문했으면 return
 

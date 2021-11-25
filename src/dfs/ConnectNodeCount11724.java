@@ -32,7 +32,7 @@ public class ConnectNodeCount11724 {
         int answer = 0;
 
         for(int i = 1; i <= n; i++ ){
-            // 방문하지 않은 노드 깊이우선 탐색 후 answer 증가
+            // 방문하지 않은 노드 깊이 우선 탐색 후 answer 증가
             if(!visited[i]){
                 dfs(i);
                 answer++;
@@ -42,14 +42,14 @@ public class ConnectNodeCount11724 {
         // === 출력 ===
         System.out.println(answer);
     }
-    // 깊이우선탐색
+    // 깊이 우선 탐색
     public static void dfs(int idx){
         if(visited[idx]) return;    // 이미 방문한 노드일 경우 return
         // 현재 위치 방문처리
         visited[idx] = true;
         // 현재 노드에서 갈 수 있는 노드 반복
         for(int i : arr[idx]){
-            if(!visited[i]) dfs(i); // 아직 방문하지 않은 노드가 있을 경우 깊이우선탐색
+            if(!visited[i]) dfs(i); // 아직 방문하지 않은 노드가 있을 경우 깊이 우선 탐색
         }
     }
 }

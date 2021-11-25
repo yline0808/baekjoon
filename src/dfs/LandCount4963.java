@@ -38,7 +38,7 @@ public class LandCount4963 {
             // map의 전체 탐색
             for(int i = 0; i < h; i++){
                 for(int j = 0; j < w; j++){
-                    // 만일 방문하지 않았거나, 섬이 있는 경우 깊이우선 탐색
+                    // 만일 방문하지 않았거나, 섬이 있는 경우 깊이 우선 탐색
                     if(map[i][j] != 0){
                         dfs(j, i, w, h);
                         cnt++;
@@ -51,7 +51,7 @@ public class LandCount4963 {
         // === 출력 ===
         for(int i : answer) System.out.println(i);
     }
-    // 깊이우선탐색
+    // 깊이 우선 탐색
     public static void dfs(int x, int y, int w, int h){
         if(map[y][x] == 0) return;  // 현재 위치에 섬이 없거나 이미 방문한 경우 return
         // 현재위치 0으로 처리함으로 방문여부 처리
@@ -63,7 +63,7 @@ public class LandCount4963 {
 
             // 다음 방향이 map을 넘지 않으면서 섬이 존재하거나 아직 방문하지 않은경우
             if(nx >= 0 && nx < w && ny >= 0 && ny < h && map[ny][nx] != 0){
-                dfs(nx, ny, w, h);      // 깊이우선탐색
+                dfs(nx, ny, w, h);      // 깊이 우선 탐색
             }
         }
     }

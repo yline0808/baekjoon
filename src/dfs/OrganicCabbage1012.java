@@ -49,7 +49,7 @@ public class OrganicCabbage1012 {
         // 배추지역 반환
         return cnt;
     }
-    // 깊이우선 탐색
+    // 깊이 우선 탐색
     public static void dfs(int x, int y, int m, int n){
         // 현재 지역이 배추가 없거나 이미 탐색한 경우 return
         if(map[y][x] == 0) return;
@@ -59,7 +59,7 @@ public class OrganicCabbage1012 {
         for(int i = 0; i < 4; i++){
             int nx = dx[i] + x;
             int ny = dy[i] + y;
-            // map에 넘어가지 않으면서 다음 지역에 배추가 있을 경우 깊이우선탐색
+            // map에 넘어가지 않으면서 다음 지역에 배추가 있을 경우 깊이 우선 탐색
             if(nx >= 0 && nx < m && ny >= 0 && ny < n && map[ny][nx] == 1){
                 dfs(nx, ny, m, n);
             }
