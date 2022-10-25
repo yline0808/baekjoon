@@ -96,12 +96,14 @@ import java.util.StringTokenizer;
 -> -1
  */
 
-class BallEscapeTwo13460 {
+class BallEscapeTwo13460T {
     //row: 가로, col:세로
     static int row,col;
-    static int[][] map;
+    static char[][] map;
     static boolean[][][][] checked;
+    //최초 시도시 가장 큰 정수와 비교하기 위함
     static int min = Integer.MAX_VALUE;
+    //우 좌 상 하
     static int[] dx = {1, -1, 0 ,0};
     static int[] dy = {0, 0, 1, -1};
     public static void main(String[] args) throws IOException {
@@ -111,20 +113,19 @@ class BallEscapeTwo13460 {
 
         row = Integer.parseInt(st.nextToken());
         col = Integer.parseInt(st.nextToken());
-        map = new int[row][col];
+        map = new char[row][col];
         checked = new boolean[row][col][row][col];
 
-        int rx =0, ry =0;
-        int bx =0, by =0;
+        int rx =0, ry =0;   //빨간공 위치
+        int bx =0, by =0;   //파란공 위치
         for(int i=0; i<row; i++) {
             String[] line = br.readLine().split("");
             for(int j=0; j<col; j++) {
-                // R : 47, B: 31, O : 44, #: 0, . : 11
-                int num = line[j].charAt(0)-'0'+13;
-                map[i][j] = num;
-                if(num == 47) {
+                char val = line[j].charAt(0);
+                map[i][j] = val;
+                if(val == 'R') {
                     rx =i; ry=j;
-                }else if(num == 31) {
+                }else if(val == 'B') {
                     bx= i; by=j;
                 }
             }
@@ -138,8 +139,11 @@ class BallEscapeTwo13460 {
     }
 
     static void bfs(int rx, int ry, int bx, int by, int cnt) {
+        //큐에 공들의 위치, 카운트 통으로 저장
         Queue<int[]> q = new LinkedList<>();
+        //현재 정보 큐에 저장
         q.add(new int[] {rx,ry,bx,by, cnt});
+        //현재 위치 체크
         checked[rx][ry][bx][by] =true;
 
         while(!q.isEmpty()) {
@@ -149,6 +153,7 @@ class BallEscapeTwo13460 {
             if(pCnt>=10) {
                 return;
             }
+            //4방향 시도
             for(int i=0; i<4; i++){
                 int nRx = pos[0];
                 int nRy = pos[1];
@@ -156,29 +161,31 @@ class BallEscapeTwo13460 {
                 int nBy = pos[3];
 
                 // 빨간 구슬 이동
-                while(map[nRx+dx[i]][nRy+dy[i]] != 0) {
+                while(map[nRx+dx[i]][nRy+dy[i]] != '#') {
                     nRx += dx[i];
                     nRy += dy[i];
-                    if(map[nRx][nRy] == 44) break;
+                    if(map[nRx][nRy] == 'O') break;
                 }
 
                 // 파란 구슬 이동
-                while(map[nBx+dx[i]][nBy+dy[i]] != 0) {
+                while(map[nBx+dx[i]][nBy+dy[i]] != '#') {
                     nBx += dx[i];
                     nBy += dy[i];
-                    if(map[nBx][nBy] == 44) break;
+                    if(map[nBx][nBy] == 'O') break;
                 }
 
-                // 파란 구슬이 구멍에 들어갔을 때
-                if(map[nBx][nBy] == 44) continue;
+                //파란 구슬이 구멍에 들어갔을 때 해당 경우 패스
+                if(map[nBx][nBy] == 'O') continue;
 
-                if(map[nRx][nRy] == 44) {
+                //빨간공이 들어간 경우 가장 작은 카운트로 저장
+                if(map[nRx][nRy] == 'O') {
                     min = Math.min(min, pCnt+1);
                     return;
                 }
 
                 // 빨간 파랑 서로 만났을 때
-                if(nRx == nBx && nRy == nBy && map[nRx][nRy] != 44) {
+                if(nRx == nBx && nRy == nBy && map[nRx][nRy] != 'O') {
+                    //이동한 거리를 비교하기 위함
                     int red_move = Math.abs(nRx-pos[0]) + Math.abs(nRy-pos[1]);
                     int blue_move = Math.abs(nBx-pos[2]) + Math.abs(nBy-pos[3]);
 
@@ -192,6 +199,7 @@ class BallEscapeTwo13460 {
                     }
                 }
 
+                //한번도 방문하지 않은 위치면 이동한 위치 체크 후 큐에 다음 위치와 정보 저장
                 if(!checked[nRx][nRy][nBx][nBy]) {
                     checked[nRx][nRy][nBx][nBy] = true;
                     q.add(new int[] {nRx, nRy, nBx, nBy, pCnt+1});
