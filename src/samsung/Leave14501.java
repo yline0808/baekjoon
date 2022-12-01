@@ -25,7 +25,7 @@ public class Leave14501 {
         //dp로 점화식을 구해서 풀어야함
         /*
         해석 : 다음 완료일이 지정한 날을 넘지 않으면 해당 날짜의 dp와 지금 접수하려는 날의 dp를 비교 후 최대값을 다음 완료일에 넣어줌
-        점화식 : if( i + ti ) dp[i + ti] = max( dp[i + ti], dp[i] + pi )
+        점화식 : if( i + ti <=n ) dp[i + ti] = max( dp[i + ti], dp[i] + pi )
                 dp[i + 1] = Math.max(dp[i + 1], dp[i])  //계속 다음값을 누적 더해주기 위해
          */
         for (int i = 0; i < n; i++) {
