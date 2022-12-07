@@ -38,7 +38,7 @@ public class StartAndLink14889 {
 
         for (int i = idx; i < n; i++) {
             check[i] = true;
-            combination(idx + 1, cnt + 1);
+            combination(i + 1, cnt + 1);
             check[i] = false;
         }
     }
